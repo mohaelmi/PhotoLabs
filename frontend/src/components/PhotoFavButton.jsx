@@ -3,16 +3,17 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+function PhotoFavButton(props) {
   const [like, setLike ] = useState(false)
   const toggleLike = () => {
+    props.addOrRemoveId(props.photo_id)
     setLike(!like)
   }
 
   return (
-    <div  onClick={toggleLike} className= {`photo-list__fav-icon ${like}`} >
+    <div  onClick={toggleLike} className= "photo-list__fav-icon" >
       <div className="photo-list__fav-icon-svg">
-        {/* Insert React */}
+      <FavIcon  selected = {like}  />
       </div>
     </div>
   );
