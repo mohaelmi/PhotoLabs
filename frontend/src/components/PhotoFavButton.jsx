@@ -1,19 +1,23 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
+import { useToggleLike } from "../hooks/useToggleLike"
 
-import FavIcon from './FavIcon';
-import '../styles/PhotoFavButton.scss';
+import FavIcon from "./FavIcon";
+import "../styles/PhotoFavButton.scss";
 
 function PhotoFavButton(props) {
-  const [like, setLike ] = useState(false)
-  const toggleLike = () => {
-    props.addOrRemoveId(props.photo_id)
-    setLike(!like)
-  }
+  const {favourate, toggleLike} = props;
+  const [like, setLike] = useState(false);
+  const toggleLiked = () => {
+    toggleLike(props.photo_id);
+    setLike(!like);
+  };
+
+ 
 
   return (
-    <div  onClick={toggleLike} className= "photo-list__fav-icon" >
+    <div onClick={toggleLiked} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-      <FavIcon  selected = {like}  />
+        <FavIcon selected={like}  />
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import './App.scss';
 import HomeRoute from 'routes/HomeRoute'
 import photosData  from 'mocks/photos'
 import topicsData  from 'mocks/topics'
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import { useToggleLike } from 'hooks/useToggleLike';
 
 
 
@@ -14,11 +16,20 @@ import topicsData  from 'mocks/topics'
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-// const [photos, setPhotos] = useState(photosData)
-// const [topics, setTopics] = useState(topicsData)
+  const [selectedPhoto, setSelectedPhoto] = useState(null)
+  const toggleModal = (id) => {
+    setSelectedPhoto(id)
+  }
+
+  const [likes, likedPhotos] = useToggleLike([])
+  
+
+
   return (
     <div className="App">
-     <HomeRoute photos = {photosData} topics = {topicsData} />
+    { selectedPhoto > 0 && <PhotoDetailsModal closeModal = {toggleModal} id = {selectedPhoto} photos = {photosData} /> }
+    <HomeRoute photos = {photosData} topics = {topicsData} openModal = {toggleModal} toggleLike = {likedPhotos} likes = {likes} />
+   
     </div>
   );
 };

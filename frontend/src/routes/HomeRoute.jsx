@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useToggleLike } from "../hooks/useToggleLike"
 
-
-import '../styles/HomeRoute.scss';
-import TopNavigation from 'components/TopNavigationBar';
-import PhotoList from 'components/PhotoList';
-
+import "../styles/HomeRoute.scss";
+import TopNavigation from "components/TopNavigationBar";
+import PhotoList from "components/PhotoList";
 
 const HomeRoute = (props) => {
-  const [like, setLike ] = useState([])
-  const toggleLike = (id) => {
-    // setLike(!like)
-    if(like.includes(id)){
-      const newArray = [...like]
-      newArray.pop()
-      setLike(newArray)
-    }else {
-      const newArray = [...like]
-      newArray.push(id)
-      setLike(newArray)
-      setLike(newArray)
-    }
-  }
-  
+  const [like, toggleLike] = useToggleLike([])
+  console.log(like);
   return (
     <div className="home-route">
-      <TopNavigation topics = {props.topics} selected = {like}  />
-      <PhotoList photos ={props.photos} addOrRemoveId = {toggleLike} selected = {like} />
+      <TopNavigation topics={props.topics} likes={props.likes}   toggleLike = {props.toggleLike} />
+      <PhotoList
+        photos={props.photos}
+        favourate={props.favourate}
+        openModal={props.openModal}
+        toggleLike = {props.toggleLike}
+      />
     </div>
   );
 };
