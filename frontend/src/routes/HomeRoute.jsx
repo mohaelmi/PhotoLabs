@@ -6,14 +6,15 @@ import PhotoList from "components/PhotoList";
 import { useApplicationData } from "../hooks/useApplicationData";
 
 const HomeRoute = (props) => {
-  const [likes, toggleLike] = useApplicationData([]);
-  console.log(likes);
+
+  // console.log("homeroute ", props);
   return (
     <div className="home-route">
       <TopNavigation
         topics={props.topics}
         likes={props.likes}
         toggleLike={props.toggleLike}
+        selectedPhoto = {props.selectedPhoto}
       />
       <PhotoList
         photos={props.photos}

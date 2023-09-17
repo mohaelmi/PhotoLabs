@@ -6,6 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
+  // console.log("photolistitem: ", props);
 
   return (
     <article className="photo-list__item">

@@ -4,10 +4,10 @@ import FavIcon from './FavIcon';
 import '../styles/FavBadge.scss';
 
 const FavBadge = ({ isFavPhotoExist, selected }) => {
-
+  // console.log("FavBadge", isFavPhotoExist);
   return (
     <div className="fav-badge">
-      <FavIcon displayAlert={selected} selected = {selected}  />
+      <FavIcon displayAlert={isFavPhotoExist} selected = {selected}  />
     </div>
   ) 
 };

@@ -24,7 +24,7 @@ const PhotoDetailsModal = (props) => {
       <div className="photo-list__item ">
         <div style={{ marginLeft : `${8}%` }}>
       <PhotoFavButton 
-       favourate={props.favourate}
+       likes={props.likes}
        toggleLike = {props.toggleLike}
        photo_id={photo.id}
       />
@@ -44,7 +44,7 @@ const PhotoDetailsModal = (props) => {
         <div className="photo-details-modal__images">
           <h5>similar photos</h5>
           <PhotoList photos={similar} toggleLike={props.toggleLike}
-          selected={props.selected} />
+          selected={props.selected} likes = {props.likes} />
         </div>
       </div>
     </div>

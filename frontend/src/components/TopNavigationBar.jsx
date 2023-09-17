@@ -7,12 +7,12 @@ import FavBadge from 'components/FavBadge';
 
 const TopNavigation = (props) => {
 
-
+  const isFavPhotoExist =  props.likes.length > 0 ? true : false
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList topics ={props.topics} />
-      <FavBadge isFavPhotoExist = {props.toggleLike} selected = {props.likes} />
+      <FavBadge isFavPhotoExist = {isFavPhotoExist} selected = {props.toggleLike} />
     </div>
   )
 }
