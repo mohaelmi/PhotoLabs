@@ -22,11 +22,11 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-list__item ">
-        <div style={{ marginLeft : 60 }}>
+        <div style={{ marginLeft : `${8}%` }}>
       <PhotoFavButton 
-        selected={photo.id}
-        addOrRemoveId={props.closeModal}
-        photo_id={photo.id}
+       favourate={props.favourate}
+       toggleLike = {props.toggleLike}
+       photo_id={photo.id}
       />
         </div>
         <img src={photo.urls.full} className="photo-details-modal__image " />
@@ -43,8 +43,8 @@ const PhotoDetailsModal = (props) => {
         </div>
         <div className="photo-details-modal__images">
           <h5>similar photos</h5>
-          <PhotoList photos={similar} addOrRemoveId={props.closeModal}
-        selected={props.selected} />
+          <PhotoList photos={similar} toggleLike={props.toggleLike}
+          selected={props.selected} />
         </div>
       </div>
     </div>

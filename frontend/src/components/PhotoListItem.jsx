@@ -10,9 +10,10 @@ const PhotoListItem = (props) => {
   return (
     <article className="photo-list__item">
       <PhotoFavButton
-        favourate={props.favourate}
+        likes={props.likes}
         toggleLike = {props.toggleLike}
         photo_id={props.photo.id}
+        selectedPhoto = {props.selectedPhoto}
       />
       <img
         src={props.photo.urls.regular}

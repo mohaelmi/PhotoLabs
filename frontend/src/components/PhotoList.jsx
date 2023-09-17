@@ -10,9 +10,10 @@ const PhotoList = (props) => {
       <PhotoListItem
         key={photo.id}
         photo={photo}
-        favourae={props.favourae}
+        likes={props.likes}
         toggleLike = {props.toggleLike}
         openModal={props.openModal}
+        selectedPhoto = {props.selectedPhoto}
       />
     ));
   };
