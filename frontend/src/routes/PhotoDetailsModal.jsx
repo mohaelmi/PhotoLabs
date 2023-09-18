@@ -3,14 +3,12 @@ import React, { useState } from "react";
 import "../styles/PhotoDetailsModal.scss";
 import "../styles/PhotoListItem.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
-import photosData from "../mocks/photos";
 import PhotoList from "components/PhotoList";
 import PhotoFavButton from "components/PhotoFavButton";
-import photos from "../mocks/photos";
 
 const PhotoDetailsModal = (props) => {
-  // const [id, setId] = useState(props.id)
-  const photo = photosData.find((photo) => photo.id === props.id);
+
+  const photo = props.photos.find((photo) => photo.id === props.id);
   const similar = Object.values(photo.similar_photos);
   
   return (
