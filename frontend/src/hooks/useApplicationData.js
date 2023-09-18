@@ -6,7 +6,7 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  DISPLAY_PHOTOS_PER_TOPIC: 'DISPLAY_PHOTOS_PER_TOPIC'
 }
 
 export const reducer = (state, action) => {
@@ -40,6 +40,12 @@ export const reducer = (state, action) => {
         ...state,
         topicData: action.payload
       }
+
+      case ACTIONS.DISPLAY_PHOTOS_PER_TOPIC: 
+      return {
+        ...state,
+        photoData: action.payload
+      }
     
     default:
       throw new Error(
@@ -54,6 +60,7 @@ export const useApplicationData = () => {
     selectedPhoto: null,
     photoData: [],
     topicData: []
+    // photosPerTopic: []
   };
   
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -84,6 +91,13 @@ export const useApplicationData = () => {
     dispatch({type: ACTIONS.SELECT_PHOTO, payload: id});
   }
 
+  const selectTopic = (id) => {
+    fetch(`/api/topics/photos/${id}`)
+    .then((response)=> response.json())
+    .then((photosPerTopic) =>  dispatch({type: ACTIONS.DISPLAY_PHOTOS_PER_TOPIC, payload: photosPerTopic}))
+    .catch((err) => console.log("error: ", err))
+  }
 
-  return [state.likedPhotos, state.photoData, state.topicData, toggleLikes, state.selectedPhoto, toggleModal]
+
+  return [state, toggleLikes, toggleModal, selectTopic]
 }

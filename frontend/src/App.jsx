@@ -11,27 +11,28 @@ import { useApplicationData } from "./hooks/useApplicationData";
 
 
 const App = () => {
-  const [likes, photoData, topicData, toggleLike, selectedPhoto, toggleModal] = useApplicationData();
+  const [state,  toggleLike, toggleModal, selecTopic] = useApplicationData();
 
   return (
     <div className="App">
-      {selectedPhoto > 0 && (
+      {state.selectedPhoto > 0 && (
         <PhotoDetailsModal
           closeModal={toggleModal}
-          id={selectedPhoto}
-          photos={photoData}
-          selectedPhoto={selectedPhoto}
+          id={state.selectedPhoto}
+          photos={state.photoData}
+          selectedPhoto={state.selectedPhoto}
           toggleLike={toggleLike}
-          likes={likes}
+          likes={state.likedPhotos}
         />
       )}
       <HomeRoute
-        photos={photoData}
-        topics={topicData}
+        photos={state.photoData}
+        topics={state.topicData}
         openModal={toggleModal}
         toggleLike={toggleLike}
-        likes={likes}
-        selectedPhoto={selectedPhoto}
+        likes={state.likedPhotos}
+        selectedPhoto={state.selectedPhoto}
+        selectTopic = {selecTopic}
       />
     </div>
   );

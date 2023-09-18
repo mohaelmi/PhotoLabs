@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
-import { useApplicationData } from "../hooks/useApplicationData";
+
 
 const HomeRoute = (props) => {
 
-  // console.log("homeroute ", props);
+
   return (
     <div className="home-route">
       <TopNavigation
@@ -15,6 +15,7 @@ const HomeRoute = (props) => {
         likes={props.likes}
         toggleLike={props.toggleLike}
         selectedPhoto = {props.selectedPhoto}
+        selectTopic = {props.selectTopic}
       />
       <PhotoList
         photos={props.photos}
