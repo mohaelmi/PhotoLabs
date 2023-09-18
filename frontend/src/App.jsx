@@ -11,7 +11,7 @@ import { useApplicationData } from "./hooks/useApplicationData";
 
 
 const App = () => {
-  const [state,  toggleLike, toggleModal, selecTopic] = useApplicationData();
+  const [state,  toggleLike, toggleModal, selectTopic] = useApplicationData();
 
   return (
     <div className="App">
@@ -32,7 +32,7 @@ const App = () => {
         toggleLike={toggleLike}
         likes={state.likedPhotos}
         selectedPhoto={state.selectedPhoto}
-        selectTopic = {selecTopic}
+        selectTopic = {selectTopic}
       />
     </div>
   );
