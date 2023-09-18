@@ -12,7 +12,7 @@ import { useApplicationData } from "./hooks/useApplicationData";
 
 const App = () => {
   const [state,  toggleLike, toggleModal, selectTopic] = useApplicationData();
-  console.log(state.selectedPhoto);
+
   return (
     <div className="App">
       {state.selectedPhoto  && (
