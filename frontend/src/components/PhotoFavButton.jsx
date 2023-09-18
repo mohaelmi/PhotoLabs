@@ -13,7 +13,7 @@ function PhotoFavButton(props) {
   return (
     <div onClick={toggleLiked} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={likes.includes(props.photo_id)} displayAlert = {false}/>
+        <FavIcon selected={likes.includes(props.photo_id)}/>
       </div>
     </div>
   );
