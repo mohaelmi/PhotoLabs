@@ -14,7 +14,7 @@ const PhotoDetailsModal = (props) => {
     <div className="photo-details-modal">
       <button
         className="photo-details-modal__close-button"
-        onClick={() => props.closeModal(0)}
+        onClick={() => props.closeModal(null)}
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>

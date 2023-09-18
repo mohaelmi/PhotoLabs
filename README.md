@@ -1,7 +1,5 @@
-# react-photolabs
-PhotoLabs is a simple stock photo application - specifically a React-based single-page application (SPA) that allows users to view photos in different contexts.
-
 # Photolabs
+PhotoLabs is a simple stock photo application - specifically a React-based single-page application (SPA) that allows users to view photos in different contexts.
 
 ## Setup
 
@@ -23,5 +21,7 @@ cd backend
 npm start
 ```
 
+## Screenshots
+!["main-page"](https://github.com/mohaelmi/PhotoLabs/blob/main/frontend/docs/PhotoLabs-main-page.png?raw=true)
 
-![image alta](linek)
+!["select-photo"](https://github.com/mohaelmi/PhotoLabs/blob/main/frontend/docs/PhotoLabs-select-photo.png?raw=true)
