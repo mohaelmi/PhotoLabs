@@ -1,5 +1,5 @@
 # react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+PhotoLabs is a simple stock photo application - specifically a React-based single-page application (SPA) that allows users to view photos in different contexts.
 
 # Photolabs
 
@@ -22,3 +22,6 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
+
+
+![image alta](linek)

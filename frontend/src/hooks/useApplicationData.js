@@ -1,4 +1,5 @@
 import {useReducer, useEffect } from "react";
+import axios from 'axios';
 
 const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
@@ -52,6 +53,7 @@ const ACTIONS = {
         `Tried to reduce with unsupported action type: ${action.type}`
       );
   }
+
 };
 
 export const useApplicationData = () => {
@@ -65,17 +67,18 @@ export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    fetch("/api/photos")
-      .then((response) => response.json())
-      .then((photoData) =>
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData })
-      );
+    axios.get("/api/photos")
+    .then((response, d) => {
+      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data })
+    })
+    .catch((error) => console.log("error: ", error))
 
-    fetch("/api/topics")
-      .then((response) => response.json())
-      .then((topicData) =>
-        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData })
-      );
+    axios.get("/api/topics")
+    .then((response) => {
+      dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: response.data })
+    })
+    .catch((error) => console.log("error: ", error))
+
   }, []);
 
   const toggleLikes = (id) => {
