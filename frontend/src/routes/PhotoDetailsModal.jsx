@@ -10,8 +10,10 @@ const PhotoDetailsModal = (props) => {
   const photo = props.photos.find((photo) => photo.id === props.id);
   const similar = Object.values(photo.similar_photos);
 
+  const dark = !props.mode ? 'dark' : ''
+
   return (
-    <div className="photo-details-modal">
+    <div className={`photo-details-modal ${dark}`}>
       <button
         className="photo-details-modal__close-button"
         onClick={() => props.closeModal(null)}
@@ -19,7 +21,7 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-list__item ">
-        <div style={{ marginLeft: `${8}%` }}>
+        <div style={{ marginLeft: "8%" }}>
           <PhotoFavButton
             likes={props.likes}
             toggleLike={props.toggleLike}

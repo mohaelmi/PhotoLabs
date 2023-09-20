@@ -18,3 +18,37 @@
   text-underline-position: auto;
   margin-left: 24px;
 }
+
+.search-button {
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: #d1d2d6;
+}
+
+/* Style the search field */
+.search-form input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid grey;
+  float: left;
+  width: 50%;
+  border-radius: 5PX;
+  background: #f1f1f1;
+}
+
+/* Style the click button */
+.search-form button {
+  float: left;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 14px;
+  border: 1px solid grey;
+  border-radius: 4PX;
+  cursor: pointer;
+
+}
+
+.search-form button:hover {
+  background: #0b7dda;
+}

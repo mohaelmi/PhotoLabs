@@ -8,6 +8,9 @@ const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   SELECT_PHOTO: "SELECT_PHOTO",
   DISPLAY_PHOTOS_PER_TOPIC: "DISPLAY_PHOTOS_PER_TOPIC",
+  SEARCH_PHOTO: "SEARCH_PHOTO",
+  SEARCH_ERROR: "SEARCH_ERROR",
+  CHANGE_MODE: "CHANGE_MODE"
 };
 
  const reducer = (state, action) => {
@@ -48,6 +51,24 @@ const ACTIONS = {
         photoData: action.payload,
       };
 
+    case ACTIONS.SEARCH_PHOTO:
+      return {
+        ...state,
+        photoData: action.payload,
+      };
+
+    case ACTIONS.SEARCH_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
+    case ACTIONS.CHANGE_MODE:
+      return {
+        ...state,
+        mode: action.payload,
+      };
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -62,13 +83,15 @@ export const useApplicationData = () => {
     selectedPhoto: null,
     photoData: [],
     topicData: [],
+    mode: true
+    // error: ""
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     axios.get("/api/photos")
-    .then((response, d) => {
+    .then((response) => {
       dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data })
     })
     .catch((error) => console.log("error: ", error))
@@ -95,6 +118,25 @@ export const useApplicationData = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: id });
   };
 
+  const changeMode = (mode) => {
+    dispatch({ type: ACTIONS.CHANGE_MODE, payload: !mode });
+  };
+
+
+  const searchPhoto = (city) => {
+    axios.get(`/api/photos?location=${city}`)
+    .then((response) => {
+      if(response.data) {
+        dispatch({ type: ACTIONS.SEARCH_PHOTO, payload: response.data })
+        console.log(response.data);
+      }
+      // }else {
+      //   dispatch({ type: ACTIONS.SEARCH_ERROR, payload: "Please write a correct city" })
+      // }
+    })
+    .catch((error) => console.log("error: ", error))
+  }
+
   const selectTopic = (id) => {
     fetch(`/api/topics/photos/${id}`)
       .then((response) => response.json())
@@ -107,5 +149,5 @@ export const useApplicationData = () => {
       .catch((err) => console.log("error: ", err));
   };
 
-  return [state, toggleLikes, toggleModal, selectTopic];
+  return [state, toggleLikes, toggleModal, selectTopic, searchPhoto, changeMode];
 };

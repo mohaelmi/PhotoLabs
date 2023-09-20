@@ -11,10 +11,23 @@ import { useApplicationData } from "./hooks/useApplicationData";
 
 
 const App = () => {
-  const [state,  toggleLike, toggleModal, selectTopic] = useApplicationData();
+  const [state,  toggleLike, toggleModal, selectTopic, searchPhoto, changeMode] = useApplicationData();
+
+   const changModeInApp = (mode) => {
+    // console.log(!mode);
+    changeMode(!mode)
+    // state.mode
+    
+  }
+  // console.log(state.mode, "worked!!");
+
+  const dark = !state.mode ? 'dark' : ''
+
+
+  
 
   return (
-    <div className="App">
+    <div className={`App ${dark}`} >
       {state.selectedPhoto  && (
         <PhotoDetailsModal
           closeModal={toggleModal}
@@ -23,6 +36,7 @@ const App = () => {
           selectedPhoto={state.selectedPhoto}
           toggleLike={toggleLike}
           likes={state.likedPhotos}
+          mode = {state.mode}
         />
       )}
       <HomeRoute
@@ -33,6 +47,10 @@ const App = () => {
         likes={state.likedPhotos}
         selectedPhoto={state.selectedPhoto}
         selectTopic = {selectTopic}
+        searchPhoto = {searchPhoto}
+        changeMode = {changModeInApp}
+        mode = {state.mode}
+        error = {state.error}
       />
     </div>
   );
