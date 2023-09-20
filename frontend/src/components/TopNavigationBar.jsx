@@ -7,9 +7,7 @@ import FavBadge from "components/FavBadge";
 const TopNavigation = (props) => {
   const [location, setLocation] = useState("");
 
-  // console.log(props)
-
-  const onSubmit = (e) => {
+  const onSearch = (e) => {
     e.preventDefault();
     props.searchPhoto(location);
   };
@@ -29,7 +27,7 @@ const TopNavigation = (props) => {
           type="text"
           placeholder="Search.."
         />
-        <button type="submit" onClick={onSubmit}>
+        <button type="submit" onClick={onSearch}>
           SEARCH
         </button>
       </form>

@@ -39,7 +39,6 @@ const App = () => {
         searchPhoto={searchPhoto}
         changeMode={changModeInApp}
         mode={state.mode}
-        error={state.error}
       />
     </div>
   );

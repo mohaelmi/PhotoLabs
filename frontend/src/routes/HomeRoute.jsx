@@ -16,7 +16,7 @@ const HomeRoute = (props) => {
         searchPhoto={props.searchPhoto}
         changeMode={props.changeMode}
         mode={props.mode}
-        error={props.error}
+        
       />
       <PhotoList
         photos={props.photos}
