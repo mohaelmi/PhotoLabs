@@ -10,7 +10,7 @@ const PhotoDetailsModal = (props) => {
   const photo = props.photos.find((photo) => photo.id === props.id);
   const similar = Object.values(photo.similar_photos);
 
-  const dark = !props.mode ? 'dark' : ''
+  const dark = !props.mode ? "dark" : "";
 
   return (
     <div className={`photo-details-modal ${dark}`}>

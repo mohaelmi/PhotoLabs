@@ -36,6 +36,7 @@
   background: #f1f1f1;
 }
 
+
 /* Style the click button */
 .search-form button {
   float: left;
@@ -52,3 +53,22 @@
 .search-form button:hover {
   background: #0b7dda;
 }
+
+
+.dark-mode {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  border:2px solid;
+  border-radius:100px;
+  width:70px;
+  height:30px;
+  text-align: center;
+  cursor: default;
+ }
+ 
+ 
+ 
+ 
+ 

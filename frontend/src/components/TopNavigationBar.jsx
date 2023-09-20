@@ -16,7 +16,11 @@ const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={props.topics} selectTopic={props.selectTopic} mode = {props.mode} />
+      <TopicList
+        topics={props.topics}
+        selectTopic={props.selectTopic}
+        mode={props.mode}
+      />
 
       <form className="search-form">
         <input
@@ -24,11 +28,14 @@ const TopNavigation = (props) => {
           onChange={(e) => setLocation(e.target.value)}
           type="text"
           placeholder="Search.."
-         
         />
-        <button type="submit" onClick={onSubmit}>SEARCH</button>
+        <button type="submit" onClick={onSubmit}>
+          SEARCH
+        </button>
       </form>
-      <button onClick={() => props.changeMode(!props.mode)}>changeMode</button>
+      <i onClick={() => props.changeMode(!props.mode)} className="dark-mode">
+        mode
+      </i>
 
       <FavBadge
         isFavPhotoExist={props.likes.length > 0}

@@ -13,10 +13,10 @@ const HomeRoute = (props) => {
         toggleLike={props.toggleLike}
         selectedPhoto={props.selectedPhoto}
         selectTopic={props.selectTopic}
-        searchPhoto = {props.searchPhoto}
-        changeMode = {props.changeMode}
-        mode = {props.mode}
-        error = {props.error}
+        searchPhoto={props.searchPhoto}
+        changeMode={props.changeMode}
+        mode={props.mode}
+        error={props.error}
       />
       <PhotoList
         photos={props.photos}
