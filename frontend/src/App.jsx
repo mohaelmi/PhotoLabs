@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 
 import "./App.scss";
+
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import { useApplicationData } from "./hooks/useApplicationData";
+import ShowError from "components/ShowError";
 
 const App = () => {
-  const [state, toggleLike, toggleModal, selectTopic, searchPhoto, changeMode] =
-    useApplicationData();
+  const [state, toggleLike, toggleModal, selectTopic, searchPhoto, changeMode] = useApplicationData();
 
   const changModeInApp = (mode) => {
     changeMode(!mode);
   };
+
+
 
   const dark = !state.mode ? "dark" : "";
 
@@ -40,6 +43,7 @@ const App = () => {
         changeMode={changModeInApp}
         mode={state.mode}
       />
+      {state.error && < ShowError error = {state.error} /> }
     </div>
   );
 };

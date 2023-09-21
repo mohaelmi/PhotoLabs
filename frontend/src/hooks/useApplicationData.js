@@ -66,7 +66,7 @@ const ACTIONS = {
     case ACTIONS.CHANGE_MODE:
       return {
         ...state,
-        mode: action.payload,
+        mode: !state.mode,
       };
 
     default:
@@ -83,8 +83,8 @@ export const useApplicationData = () => {
     selectedPhoto: null,
     photoData: [],
     topicData: [],
-    mode: true
-    // error: ""
+    mode: true,
+    error: ""
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -118,21 +118,21 @@ export const useApplicationData = () => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: id });
   };
 
-  const changeMode = (mode) => {
-    dispatch({ type: ACTIONS.CHANGE_MODE, payload: !mode });
+  const changeMode = () => {
+    dispatch({ type: ACTIONS.CHANGE_MODE });
   };
 
 
   const searchPhoto = (city) => {
     axios.get(`/api/photos?location=${city}`)
     .then((response) => {
-      if(response.data) {
-        dispatch({ type: ACTIONS.SEARCH_PHOTO, payload: response.data })
+      if(response.data !== null) {
         console.log(response.data);
+        dispatch({ type: ACTIONS.SEARCH_PHOTO, payload: response.data })
+      }else {
+        dispatch({ type: ACTIONS.SEARCH_PHOTO, payload: [] })
+        dispatch({ type: ACTIONS.SEARCH_ERROR, payload: "Please write a correct city" })
       }
-      // }else {
-      //   dispatch({ type: ACTIONS.SEARCH_ERROR, payload: "Please write a correct city" })
-      // }
     })
     .catch((error) => console.log("error: ", error))
   }

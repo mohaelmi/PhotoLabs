@@ -31,7 +31,7 @@ const TopNavigation = (props) => {
           SEARCH
         </button>
       </form>
-      <i onClick={() => props.changeMode(!props.mode)} className="dark-mode">
+      <i onClick={props.changeMode} className="dark-mode">
         mode
       </i>
 
