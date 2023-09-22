@@ -5,7 +5,7 @@ import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import { useApplicationData } from "./hooks/useApplicationData";
-import ShowError from "components/ShowError";
+import ShowError from "components/ShowErrors";
 
 const App = () => {
   const [state, toggleLike, toggleModal, selectTopic, searchPhoto, changeMode] = useApplicationData();
